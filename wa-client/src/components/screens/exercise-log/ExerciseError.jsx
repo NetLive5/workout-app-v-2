@@ -6,8 +6,6 @@ const ExerciseError = ({ errors }) => {
 			{errors.map((error, index) =>
 				error ? <Alert key={error + index} type='error' text={error} /> : null
 			)}
-			{errorChange && <Alert type='error' text={errorChange} />}
-			{errorCompleted && <Alert type='error' text={errorCompleted} />}
 		</div>
 	)
 }

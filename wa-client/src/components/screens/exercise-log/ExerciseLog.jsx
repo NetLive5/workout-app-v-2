@@ -12,9 +12,16 @@ import TableHeader from './table/TableHeader'
 import TableRow from './table/TableRow'
 
 const ExerciseLog = () => {
-	const { exerciseLog, isLoading, isSuccess } = useExerciseLog()
+	const {
+		exerciseLog,
+		isLoading,
+		isSuccess,
+		errorChange,
+		getState,
+		onChangeState,
+		toggleTime
+	} = useExerciseLog()
 
-	const { updateTime, errorChange } = useUpdateTime()
 	const { completeLog, errorCompleted } = useCompleteLog()
 
 	return (
@@ -30,8 +37,14 @@ const ExerciseLog = () => {
 				) : (
 					<div className={styles.wrapper}>
 						<TableHeader />
-						{exerciseLog?.times.map((item, index) => (
-							<TableRow item={item} key={item.id} />
+						{exerciseLog?.times.map(item => (
+							<TableRow
+								getState={getState}
+								onChangeState={onChangeState}
+								toggleTime={toggleTime}
+								item={item}
+								key={item.id}
+							/>
 						))}
 					</div>
 				)}
