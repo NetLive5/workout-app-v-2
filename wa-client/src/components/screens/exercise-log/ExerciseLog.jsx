@@ -1,6 +1,4 @@
-import { useCompleteLog } from './hooks/useCompleteLog'
 import { useExerciseLog } from './hooks/useExerciseLog'
-import { useUpdateTime } from './hooks/useUpdateTime'
 
 import Loader from '../../ui/Loader'
 import Alert from '../../ui/alert/Alert'
@@ -16,13 +14,11 @@ const ExerciseLog = () => {
 		exerciseLog,
 		isLoading,
 		isSuccess,
-		errorChange,
+		error,
 		getState,
 		onChangeState,
 		toggleTime
 	} = useExerciseLog()
-
-	const { completeLog, errorCompleted } = useCompleteLog()
 
 	return (
 		<>
@@ -31,7 +27,7 @@ const ExerciseLog = () => {
 				className='wrapper-inner-page'
 				style={{ paddingLeft: 0, paddingRight: 0 }}
 			>
-				<ExerciseError errors={[errorChange, errorCompleted]} />
+				<ExerciseError errors={[error]} />
 				{isLoading ? (
 					<Loader />
 				) : (

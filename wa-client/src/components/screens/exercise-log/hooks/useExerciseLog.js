@@ -22,7 +22,7 @@ export const useExerciseLog = () => {
 		}
 	})
 
-	const { errorChange, updateTime } = useUpdateTime()
+	const { error, updateTime } = useUpdateTime(exerciseLog?.times)
 
 	const onChangeState = (timeId, key, value) => {
 		const newTimes = times.map(time => {
@@ -35,6 +35,7 @@ export const useExerciseLog = () => {
 
 		setTimes(newTimes)
 	}
+
 	const getTime = timeId => {
 		return times.find(time => time.id === timeId)
 	}
@@ -61,7 +62,7 @@ export const useExerciseLog = () => {
 		isSuccess,
 		isLoading,
 		toggleTime,
-		errorChange,
+		error,
 		onChangeState,
 		getState
 	}
